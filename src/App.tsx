@@ -6,6 +6,8 @@ import Home from './components/home/home';
 import Invoices from './components/invoices/Invoices';
 import Budgets from './components/budgets/budgets';
 import Partners from './components/partners/partners';
+import  SideNav  from './components/sideNav/SideNav';
+import NavBar from './components/navBar/NavBar';
 import { IInventoryService } from './services/inventory/IInventoryService';
 import { InventoryService } from './services/inventory/InventoryService';
 import SideNav from './components/sideNav/SideNav';
@@ -29,7 +31,6 @@ const App: React.FC = () => {
           {/* <Footer></Footer> */}
         </Container>
       </Container>
-
     </Router >
   );
 }
