@@ -127,6 +127,10 @@ export default class ProductsTable extends Component<ProductsTableProps, Product
         });
     }
 }
+
+const handleEdit = (product: IProduct)=>{}
+const handleDelete = (idProduct: string)=>{}
+const handleNew = (event:any) =>{}
 // const ExpandCell = (props: any) => (
 //     <Table.Cell {...props}>
 //         <IconButton

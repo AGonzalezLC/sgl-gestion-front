@@ -1,5 +1,6 @@
 import React from 'react'
 import { Sidenav, Nav, Icon, Dropdown } from 'rsuite';
+import { Link } from 'react-router-dom';
 
 const SideNav = () => {
     const panelStyles = {
@@ -21,24 +22,16 @@ const SideNav = () => {
                 </Sidenav.Header>
                 <Sidenav.Body>
                     <Nav>
-                        <Nav.Item eventKey="1" active icon={<Icon icon="dashboard" />}>Dashboard</Nav.Item>
-                        <Nav.Item eventKey="2" icon={<Icon icon="group" />}>User Group</Nav.Item>
-                        <Dropdown eventKey="3" title="Advanced" icon={<Icon icon="magic" />}>
+                        <Dropdown eventKey="1" title="Facturación" icon={<Icon icon="magic" />}>
                             <Dropdown.Item divider />
-                            <Dropdown.Item panel style={panelStyles}>Reports</Dropdown.Item>
-                            <Dropdown.Item eventKey="3-1">Geo</Dropdown.Item>
-                            <Dropdown.Item eventKey="3-2">Devices</Dropdown.Item>
-                            <Dropdown.Item eventKey="3-3">Loyalty</Dropdown.Item>
-                            <Dropdown.Item eventKey="3-4">Visit Depth</Dropdown.Item>
-                            <Dropdown.Item divider />
-                            <Dropdown.Item panel style={panelStyles}>Settings</Dropdown.Item>
-                            <Dropdown.Item eventKey="4-1">Applications</Dropdown.Item>
-                            <Dropdown.Item eventKey="4-2">Channels</Dropdown.Item>
-                            <Dropdown.Item eventKey="4-3">Versions</Dropdown.Item>
-                            <Dropdown.Menu eventKey="4-5" title="Custom Action">
-                                <Dropdown.Item eventKey="4-5-1">Action Name</Dropdown.Item>
-                                <Dropdown.Item eventKey="4-5-2">Action Params</Dropdown.Item>
-                            </Dropdown.Menu>
+                            <Dropdown.Item eventKey="3-1"><Link to="/budgets">Presupuestos</Link></Dropdown.Item>
+                            <Dropdown.Item eventKey="3-2"><Link to="/invoices">Facturas</Link></Dropdown.Item>
+                            <Dropdown.Item eventKey="3-3"><Link to="/home">Resumen</Link></Dropdown.Item>
+                        </Dropdown>
+                        <Nav.Item divider />
+                        <Dropdown eventKey="3" title="Productos" icon={<Icon icon="circle" />}>
+                            <Dropdown.Item eventKey="4-1"><Link to="/inventory">Inventario</Link></Dropdown.Item>
+                            <Dropdown.Item eventKey="4-2"><Link to="/inventory">Catálogo</Link></Dropdown.Item>
                         </Dropdown>
                     </Nav>
                 </Sidenav.Body>
