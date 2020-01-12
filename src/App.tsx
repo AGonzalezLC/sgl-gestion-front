@@ -9,29 +9,28 @@ import Partners from './components/partners/partners';
 import { IInventoryService } from './services/inventory/IInventoryService';
 import { InventoryService } from './services/inventory/InventoryService';
 import SideNav from './components/sideNav/SideNav';
-import { Grid, Row, Col } from 'rsuite';
+import { Grid, Row, Col, Container, Sidebar, Header, Content, Footer } from 'rsuite';
 
 const App: React.FC = () => {
   let inventoryService: IInventoryService = new InventoryService();
   return (
-    <Grid fluid>
-      <Router>
-        <Row>
-          
-        </Row>
-        <Row>
-          <Col xs={4} md={4}>
-            <SideNav />
-          </Col>
-          <Col xs={20} md={20}>
+    <Router>
+      <Container>
+        <Sidebar><SideNav/></Sidebar>
+        <Container>
+          <Header></Header>
+          <Content>
             <Route path="/home" component={Home} exact />
             <Route path="/invoices" component={Invoices} />
             <Route path="/budgets" component={Budgets} />
             <Route path="/partners" component={Partners} />
-            <Route path="/inventory" component={() => <Inventory service={inventoryService} />} /></Col>
-        </Row>
-      </Router>
-    </Grid>
+            <Route path="/inventory" component={() => <Inventory service={inventoryService} />} />
+          </Content>
+          {/* <Footer></Footer> */}
+        </Container>
+      </Container>
+
+    </Router >
   );
 }
 

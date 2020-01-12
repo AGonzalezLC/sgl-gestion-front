@@ -4,6 +4,8 @@ import { IInventoryService } from '../../services/inventory/IInventoryService';
 import ProductsTable from './productsTable/productsTable';
 import { IBaseState } from '../../interfaces/IBaseState';
 import DeleteDialog from '../deleteDialog/deleteDialog';
+import { Grid, Row, Col, Button, Icon } from 'rsuite';
+import FilterComponent from '../filterComponent/filterComponent';
 
 export interface InventoryState extends IBaseState {
     products: IProduct[];
@@ -36,6 +38,19 @@ export default class Inventory extends Component<InventoryProps, InventoryState>
         let { products } = this.state;
         return (
             <div>
+                <h1>Catálogo</h1>
+                <Grid fluid>
+                    <Row>
+                        <Col xs={12}>
+                            <FilterComponent></FilterComponent>
+                        </Col>
+                        <Col xs={12}>
+                            <Button color="blue" >
+                                <Icon icon="plus" /> Nuevo Producto
+                            </Button>
+                        </Col>
+                    </Row>
+                </Grid>
                 {this.state.showDeleteConfirmation &&
                     <DeleteDialog
                         open={this.state.showDeleteConfirmation}
