@@ -6,6 +6,7 @@ import { IBaseState } from '../../interfaces/IBaseState';
 import DeleteDialog from '../deleteDialog/deleteDialog';
 import { Grid, Row, Col, Button, Icon, Divider } from 'rsuite';
 import FilterComponent from '../filterComponent/filterComponent';
+import InventoryModalEdit from './inventoryModalEdit/InventoryModalEdit';
 
 export interface InventoryState extends IBaseState {
     products: IProduct[];
@@ -39,7 +40,7 @@ export default class Inventory extends Component<InventoryProps, InventoryState>
         return (
             <div>
                 <h1>Catálogo</h1>
-                <Divider/>
+                <Divider />
                 <Grid fluid>
                     <Row>
                         <Col xs={6}></Col>
@@ -47,7 +48,7 @@ export default class Inventory extends Component<InventoryProps, InventoryState>
                             <FilterComponent></FilterComponent>
                         </Col>
                         <Col xs={6}>
-                            <Button color="blue" >
+                            <Button color="blue" onClick={this.handleNew}>
                                 <Icon icon="plus" /> Nuevo Producto
                             </Button>
                         </Col>
@@ -59,6 +60,15 @@ export default class Inventory extends Component<InventoryProps, InventoryState>
                         open={this.state.showDeleteConfirmation}
                         handleConfirm={this.deleteProduct}
                         handleClose={this.handleCloseDeleteDialog}
+                    />
+                }
+
+                {this.state.showModalEdit &&
+                    <InventoryModalEdit
+                        showModalEdit={this.state.showModalEdit}
+                        handleClose={this.handleCloseEdit}
+                        handleSave={this.handleSave}
+                        product={this.state.selectedProduct}
                     />
                 }
                 {this.state.products.length > 0 &&
@@ -94,6 +104,10 @@ export default class Inventory extends Component<InventoryProps, InventoryState>
         this.setState({ showDeleteConfirmation: false, selectedProduct: this.emptyProduct() });
     }
 
+    private handleCloseEdit = () => {
+        this.setState({ showModalEdit: false, selectedProduct: this.emptyProduct() });
+    }
+
     private deleteProduct = () => {
         this.props.service.delete(this.state.selectedProduct._id);
     }
@@ -106,6 +120,11 @@ export default class Inventory extends Component<InventoryProps, InventoryState>
         this.setState({ showModalEdit: true, selectedProduct: this.emptyProduct() });
     }
 
+    private handleSave = (product: IProduct) => {
+        this.setState({ showModalEdit: false, selectedProduct: this.emptyProduct() });
+        this.props.service.save(product);
+    }
+    
     private emptyProduct = (): IProduct => {
         return {
             _id: '',

@@ -5,7 +5,7 @@ import './Nav.css';
 
 const NavBar = () => {
   return (
-    <Navbar >
+    <Navbar>
       <Navbar.Body className="navegacion">
         <Nav>
         <img src="/logo192.png" alt="Logo" width="40"/>

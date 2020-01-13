@@ -11,6 +11,7 @@ import { IInventoryService } from './services/inventory/IInventoryService';
 import { InventoryService } from './services/inventory/InventoryService';
 import { Container, Sidebar, Header, Content, Footer, Divider } from 'rsuite';
 import NavBar from './components/navBar/NavBar';
+import './App.css';
 
 const App: React.FC = () => {
   let inventoryService: IInventoryService = new InventoryService();
