@@ -7,11 +7,10 @@ import Invoices from './components/invoices/Invoices';
 import Budgets from './components/budgets/budgets';
 import Partners from './components/partners/partners';
 import  SideNav  from './components/sideNav/SideNav';
-import NavBar from './components/navBar/NavBar';
 import { IInventoryService } from './services/inventory/IInventoryService';
 import { InventoryService } from './services/inventory/InventoryService';
-import SideNav from './components/sideNav/SideNav';
-import { Grid, Row, Col, Container, Sidebar, Header, Content, Footer } from 'rsuite';
+import { Container, Sidebar, Header, Content, Footer, Divider } from 'rsuite';
+import NavBar from './components/navBar/NavBar';
 
 const App: React.FC = () => {
   let inventoryService: IInventoryService = new InventoryService();
@@ -20,7 +19,9 @@ const App: React.FC = () => {
       <Container>
         <Sidebar><SideNav/></Sidebar>
         <Container>
-          <Header></Header>
+          <Header>
+            <NavBar/>
+          </Header>
           <Content>
             <Route path="/home" component={Home} exact />
             <Route path="/invoices" component={Invoices} />
