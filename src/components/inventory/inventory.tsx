@@ -135,7 +135,7 @@ export default class Inventory extends Component<InventoryProps, InventoryState>
             price: 0,
             stock: 0,
             description: '',
-            type: '',
+            type: 'PRODUCT',
         };
     }
 }

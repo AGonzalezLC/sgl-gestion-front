@@ -15,7 +15,7 @@ export class InventoryService implements IInventoryService {
     }
 
     public async save(product: IProduct): Promise<any> {
-        throw new Error("Method not implemented.");
+        return await axios.post(`http://localhost:4000/products/`, product);
     }
 
     public async delete(productId: string): Promise<any> {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal, Button, InputGroup, Icon, Input } from 'rsuite';
+import { Modal, Button, InputGroup, Icon, Input, FormGroup, ControlLabel, FormControl, Form } from 'rsuite';
 import { IInventoryModalEditProps } from './IInventoryModalEditProps';
 import { IProduct } from '../../../models/IProduct';
 
@@ -19,7 +19,7 @@ const InventoryModalEdit = (props: IInventoryModalEditProps) => {
     } else {
       newProduct[propertyName] = newValue;
     }
-    this.setState({ selectedProduct: newProduct });
+    setState({ selectedProduct: newProduct });
   }
   return (
     <Modal backdrop={true} show={props.showModalEdit} onHide={props.handleClose}>
@@ -27,54 +27,47 @@ const InventoryModalEdit = (props: IInventoryModalEditProps) => {
         <Modal.Title>Modal Title</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <InputGroup>
-          <InputGroup.Addon>
-            <Icon icon="avatar" />
-          </InputGroup.Addon>
-        </InputGroup>
-        <Input
-          placeholder={'name'}
-          onChange={
-            (newValue: string, event: any, ) => {
-              handleInputChange(event, newValue, 'name', false);
-            }
-          } />
-        <Input
-          placeholder={'reference'}
-          onChange={
-            (newValue: string, event: any, ) => {
-              handleInputChange(event, newValue, 'reference', false);
-            }
-          } />
-        <Input
-          placeholder={'category'}
-          onChange={
-            (newValue: string, event: any, ) => {
-              handleInputChange(event, newValue, 'category', false);
-            }
-          } />
-        <Input
-          placeholder={'description'}
-          onChange={
-            (newValue: string, event: any, ) => {
-              handleInputChange(event, newValue, 'description', false);
-            }
-          } />
-        <Input
-          placeholder={'type'}
-          onChange={
-            (newValue: string, event: any, ) => {
-              handleInputChange(event, newValue, 'type', false);
-            }
-          } />
+        <Form>
+          <InputGroup>
+            <InputGroup.Addon>
+              <Icon icon="avatar" />
+            </InputGroup.Addon>
+            <Input
+              placeholder={'Nombre del producto'}
+              onChange={
+                (newValue: string, event: any, ) => {
+                  handleInputChange(event, newValue, 'name', false);
+                }
+              } />
+          </InputGroup>
+          <Input
+            placeholder={'Referencia'}
+            onChange={
+              (newValue: string, event: any, ) => {
+                handleInputChange(event, newValue, 'reference', false);
+              }
+            } />
+          <Input
+            placeholder={'Categoría'}
+            onChange={
+              (newValue: string, event: any, ) => {
+                handleInputChange(event, newValue, 'category', false);
+              }
+            } />
+          <FormGroup>
+            <ControlLabel>Descripción</ControlLabel>
+            <FormControl name="textarea" rows={5} componentClass="textarea"
+              onChange={
+                (newValue: string, event: any, ) => {
+                  handleInputChange(event, newValue, 'description', false);
+                }
+              } />
+          </FormGroup>
+        </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleSave} appearance="primary">
-          Ok
-            </Button>
-        <Button onClick={props.handleClose} appearance="subtle">
-          Cancel
-            </Button>
+        <Button onClick={handleSave} appearance="primary">Guardar</Button>
+        <Button onClick={props.handleClose} appearance="subtle">Cancelar</Button>
       </Modal.Footer>
     </Modal>
   )
